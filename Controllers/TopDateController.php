@@ -51,6 +51,8 @@ class TopDateController extends Controller
      //var_dump($pr);die;
      $em=$params["em"];
      
+     //ok
+     
      
      $dql = "select t from Entity\TopDate t";
      $query = $em->createQuery($dql)->SetMaxResults(50);
