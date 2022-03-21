@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Artistes les plus écoutés</h1>
+{% endblock %}
+
+{% block ju %}
+   
+    <ul>
+        {% for dt in dts %}
+            <li>{{ dt.dt|date("d/m/Y") }} {{dt.nb}}</li>
+            <div>
+            <a href="?c=topDate&t=liste"><input type="button" value ="Afficher"></a>
+            <input type="hidden" id="id" name="topDate" value="{{top_date}}">
+        </div>
+        {% endfor %}
+    </ul>
+
+    <script>
+        $(document).ready(function() {
+            $('#topDate').DataTable();
+        });
+    </script>
+   
+   
+{% endblock %}
+
+     
