@@ -1,17 +1,18 @@
-{# affichage des artistes à une date donnée#}
+{# affichage des tops par dates (historique) #}
+
 {% extends "base.html" %}
 
 {% block body %}
-    <h1>Ton classement</h1>
+    <h1>Liste des tops par dates</h1>
 {% endblock %}
 
 {% block ju %}
    
     <ul>
         {% for dt in dts %}
-            <li>{{ dt["dt"]|date("d/m/Y") }} {{ dt["artist"].name }}</li>
+            <li>{{ dt["dt"]|date("d/m/Y") }}</li>
             <div>
-            <a href="?c=artist&t=show&id={{dt["artist"].spotifyId}}"><input type="button" value ="Afficher"></a>
+            <a href="?c=topDate&t=listeDate&dt={{dt['dt']|date ("Y-m-d")}}"><input type="button" value ="Afficher"></a>
             <input type="hidden" id="id" name="topDate" value="{{top_date}}">
         </div>
         {% endfor %}
@@ -26,3 +27,4 @@
    
 {% endblock %}
 
+     

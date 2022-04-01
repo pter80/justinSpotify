@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace Controllers;
 
@@ -25,25 +25,38 @@ class TopDateController extends Controller
      $result=$query->getResult();
      //var_dump($result);
      $dts = $result;
-     echo $this->twig->render('new_top_list.twig', ['dts'=>$dts]);
+     echo $this->twig->render('new_list.twig', ['dts'=>$dts]);
      
   }
   
+  //affiche les données du top pour une date donnée
    public function listeDate($params)
   {
      $em=$params["em"];
-     
-     
-     $dql = "SELECT t.dt, COUNT(t.id) nb from Entity\TopDate t WHERE t.dt BETWEEN '2022-03-07 00:00:00' AND '2022-03-07 23:59:59'";
+     $data=$params["get"]["dt"];
+     //var_dump($data);
+     $dql = "SELECT t from Entity\TopDate t WHERE t.dt BETWEEN :dt1 AND :dt2";
      //$query = $em->createQuery($dql)->SetMaxResults(50);
-     $query = $em->createQuery($dql);
+     $query = $em->createQuery($dql)->setParameter("dt1", $data." 00:00:00")->setParameter("dt2", $data." 23:59:59");
+     //var_dump($query->getSql(),$query->getParameters()); die;
+     //$query = $em->createQuery($dql);
+     //echo $query->getSql();
      $result=$query->getResult();
-     //var_dump($result);
+     //var_dump(count ($result));
      $dts = $result;
+     foreach ($dts as $key=>$dt){
+         //var_dump($dt->getDt());
+         $dts[$key]=array (
+             "href" => "c=topDate&t=liste & dt=".$dt->getDt()->format("Y-m-d"),
+             "dt" => $dt->getDt(),
+             "artist" => $dt->getArtist(),
+             );
+
+     }
+     //var_dump ($dts[0]["artist"]->getSpotifyId()); die ;
      echo $this->twig->render('new_top_list.twig', ['dts'=>$dts]);
      
   }
-    
      
      public function liste($params)
   {
@@ -51,11 +64,9 @@ class TopDateController extends Controller
      //var_dump($pr);die;
      $em=$params["em"];
      
-     //okokokokokok
-     
      
      $dql = "select t from Entity\TopDate t";
-     $query = $em->createQuery($dql)->SetMaxResults(50);
+     $query = $em->createQuery($dql);
      $result=$query->getResult();
      //var_dump($result);
      $tops = $result;
@@ -68,7 +79,7 @@ class TopDateController extends Controller
 
         $ch = curl_init("https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=150&offset=5");
         $fp = fopen("./documents/top.json", "w");
-        $token='BQDPPZcg8Xwn7wcKIFQsWlOJeeclVNQZzlgXSj_dG85R-_qscE73x2MXyIhWxUyKRYmT9a4otK9eKFBr6U1pLkYCIqIDgqb9pyy_adJgVeune9imM0AuPhpn3QqG7Jl-k7tMmQ-cma0gUbc3pQyE';
+        $token='BQCaSPICx1RgsxRywtyvzCm5WxbCcPDGvH8jHkbQbZP6a3zylqoMhbRUrbRb6ZXIO-9_aamndUT8hNHceLT_fgmzjCWqiam-vla-LvadXWmPyAgiLe76W9279hMGp3L3hkZ8bvfCDx92OxRx7eqV';
         curl_setopt($ch, CURLOPT_FILE, $fp);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         //curl_setopt($ch, CURLOPT_URL, "https://api.spotify.com/v1/oauth2/token");
