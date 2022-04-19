@@ -33,8 +33,7 @@ class ArtistController extends Controller
     
      
      echo $this->twig->render('index.html', ['name' => 'Justin']);
-     
-     
+     èy
  }
  
  

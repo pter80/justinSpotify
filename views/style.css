@@ -1,49 +1,81 @@
-/* w3school aide pour les commandes css*/
-        
-        body {
-          margin :0; 
-            }
-            
-        ul {
-          list-style-type: none;
-          margin: 0;
-          float: left;
-          padding: 0; /* écarts de remplissage */
-          width: 200px; /* largeur */
-          background-color:lightblue;
-          border: 1px solid #555;
-        }
-        
-        #footer {
-            position : relative;
-            top : 500px;
-        }
-        li a {
-          display: block; /* grille ou boite, disposition de l'élément */
-          color: #000;
-          padding: 8px 16px;
-          text-decoration: none;
-        }
-        
-        li {
-          text-align: center;
-          border-bottom: 1px solid #555;
-        }
-        
-        li:last-child {
-          border-bottom: none;
-        }
-        
-        li a.active {
-          background-color: #04AA6D;
-          color: white;
-        }
-        
-        li a:hover:not(.active) {
-          background-color: #555;
-          color: white;
-        }
-        
-        div {
-            margin-left:40%; height:1000px;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+  background-color: antiquewhite;
+}
+
+*{
+  margin :0; 
+  padding :0;
+  
+}
+
+nav {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+nav ul{
+  display : flex;
+  align-items :center;
+  list-style-type: none;
+  height : 65px;
+  background-color: black;
+  color : white;
+  
+}
+nav ul li{
+  padding: 0 12px;
+}
+.brand img{
+  width: 44px;
+  padding : 0 8px;
+ }
+ 
+ .brand {
+   display: flex;
+   align-items: center;
+   font-weight: bolder;
+   font-size : 1.3rem;
+ }
+ 
+ .container{
+   min-height: 75vh;
+   background-color : black;
+   color : white;
+   font-family: 'Valera Round', sans-serif ;
+   display: flex;
+   width: 70%;
+   margin: 23px auto;
+   border-radius:12px;
+   padding: 34px;
+   background-image: url(https://i.pinimg.com/736x/1d/cd/88/1dcd88d134b46b3cfd59058e41d1b1fa.jpg);
+   
+ }
+  
+  .bottom{
+    position: sticky;
+    height: 130px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+  }
+  
+  .icons{
+    margin-top: 14px;
+  }
+  
+  .icons i{
+    cursor: pointer;
+  }
+   
+  #myProgressBar{
+    width: 80vw;
+    text-align: center;
+  }
+  
+  

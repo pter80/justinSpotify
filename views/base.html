@@ -1,39 +1,73 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="views/css/myStyle.css">
+        {% block stylesheet %}
+        <link type="text/css" href="views/style.css" rel="stylesheet" >
+         <link rel="stylesheet" href="views/css/myStyle.css">
         <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
         <script src="javascript/jquery.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spotify - Tes habitudes d'écoute sont ici </title>
         
     </head>
 <body>
     <h3>
         <nav>
-            <ul id="menu">
-                <li><a href="?c=index&t=index">Home</a></li>
-                <li><a href="?c=topDate&t=newliste">Liste des tops par dates </a></li>
-                <li><a href="?c=topDate&t=liste">Artistes les plus écoutés récemment</a></li>
+            <ul>
+                <li class="brand"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Spotify">Spotify
+                <a href="?c=index&t=index"> Home</a>
+                <a href="?c=topDate&t=newliste"> Liste des tops par dates </a>
+                <a href="?c=topDate&t=liste"> Artistes les plus écoutés récemment</a></li>
             </ul>
             
         </nav>
         
+        <div class="container">
+            <div class="topList">
+                <h1> Vos chanteurs préférés au fil de l'année</h1>
+                <div>
+                    {% block body %}
+
+                    {% endblock %}
+
+                    {% block ju %}
+
+                    {% endblock %}
+
+</div>
+                <div>
+                    <div class="topItem">
+                        <img:src"https://i0.wp.com/vicken.fr/wp-content/uploads/2020/06/logo-musique-png-3.png?ssl=1" alt="1">
+                            <span></span>
+                            <span> </span>
+                        </img:src>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="topBanner"></div>
+             
+        </div>
+        
+        <div class="bottom">
+            <input type="range" name="range" id="myProgressBar" min="0" max="100"  >
+            <div class= "icons">
+                <!-- fontawesome icons -->
+                <i class="fas fa-3x fa-step-backward"></i>
+                <i class="far fa-3x fa-play-circle"></i>
+                <i class="fas fa-3x fa-step-forward"></i>
+            </div>
+        </div>
+        <<script src="https://kit.fontawesome.com/bcce2fe58e.js" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
     </h3>
     
 </body>
-
-<div>
-{% block body %}
-
-{% endblock %}
-
-{% block ju %}
-
-{% endblock %}
-
-</div>
+ {% endblock %}
 
 <form id="formulaire">
     
