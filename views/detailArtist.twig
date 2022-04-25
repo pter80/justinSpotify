@@ -1,0 +1,14 @@
+{# affichage des artistes à une date donnée#}
+
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>{{ artist.name}}</h1>
+{% endblock %}
+
+{% block ju %}
+   
+   <a href="{{ artist.externalUrl}}"> Page de {{artist.name}}</a>
+   
+   
+{% endblock %}

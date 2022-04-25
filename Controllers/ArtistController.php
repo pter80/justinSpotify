@@ -29,11 +29,12 @@ class ArtistController extends Controller
     
     $results=$query->getResult();
     $artist= $results[0];
-    //var_dump($results[0]->getId()); die;
-    
+    //var_dump($results[0]->getExternalUrl()); die;
+    $url = $results[0]->getExternalUrl();
+    //var_dump($url); die;
      
-     echo $this->twig->render('index.html', ['name' => 'Justin']);
-     èy
+ echo $this->twig->render('detailArtist.twig', ['artist'=>$artist]);
+     
  }
  
  

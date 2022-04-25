@@ -45,13 +45,13 @@ class TopDateController extends Controller
      //var_dump(count ($result));
      $dts = $result;
      foreach ($dts as $key=>$dt){
-         //var_dump($dt->getDt());
+         //var_dump($dt->getArtist());
          $dts[$key]=array (
              "href" => "c=topDate&t=liste & dt=".$dt->getDt()->format("Y-m-d"),
              "dt" => $dt->getDt(),
              "artist" => $dt->getArtist(),
              );
-
+            
      }
      //var_dump ($dts[0]["artist"]->getSpotifyId()); die ;
      echo $this->twig->render('new_top_list.twig', ['dts'=>$dts]);

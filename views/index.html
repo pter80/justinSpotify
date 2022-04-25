@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 
-
-{% block ju %}
-    <h1>{{ name }}, découvres et redécouvres tes habitudes sur Spotify</h1>
+{% block stylesheet %}
+    {{ parent() }}
+    <link type="text/css" href="views/index.css" rel="stylesheet" > 
 {% endblock %}
 
+{% block ju %}
+    <h1>Découvres et redécouvres tes habitudes sur Spotify</h1>
+    
+    {% if sessionUser == true %} <!-- Si le compte existe déja -->
+        <h1>?</h1>
+        <button class="start" onclick="window.location.href='?c=user&t=loginUser';"> Votre espace</button>
+        <button class="start" onclick="window.location.href='?c=user&t=closeSession';"> Déconnexion</button>
+
+    {% else %}
+        <h1> Connectez-vous !</h1>
+        <button class="start" onclick="window.location.href='?c=user&t=create';"> Créer un compte</button>
+        <button class="start" onclick="window.location.href='?c=user&t=login';"> Se connecter</button>
+    {% endif %}
+    
+{% endblock %}

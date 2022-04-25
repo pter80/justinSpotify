@@ -49,8 +49,8 @@ use function is_subclass_of;
 use function ltrim;
 use function method_exists;
 use function spl_object_id;
+use function str_contains;
 use function str_replace;
-use function strpos;
 use function strtolower;
 use function trait_exists;
 use function trim;
@@ -640,6 +640,15 @@ class ClassMetadataInfo implements ClassMetadata
     public $containsForeignIdentifier = false;
 
     /**
+     * READ-ONLY: Flag indicating whether the identifier/primary key contains at least one ENUM type.
+     *
+     * This flag is necessary because some code blocks require special treatment of this cases.
+     *
+     * @var bool
+     */
+    public $containsEnumIdentifier = false;
+
+    /**
      * READ-ONLY: The ID generator used for generating IDs for this class.
      *
      * @var AbstractIdGenerator
@@ -958,6 +967,10 @@ class ClassMetadataInfo implements ClassMetadata
             $serialized[] = 'containsForeignIdentifier';
         }
 
+        if ($this->containsEnumIdentifier) {
+            $serialized[] = 'containsEnumIdentifier';
+        }
+
         if ($this->isVersioned) {
             $serialized[] = 'isVersioned';
             $serialized[] = 'versionField';
@@ -1056,9 +1069,19 @@ class ClassMetadataInfo implements ClassMetadata
 
         foreach ($this->fieldMappings as $field => $mapping) {
             if (isset($mapping['declaredField']) && isset($parentReflFields[$mapping['declaredField']])) {
+                $childProperty = $this->getAccessibleProperty($reflService, $mapping['originalClass'], $mapping['originalField']);
+                assert($childProperty !== null);
+
+                if (isset($mapping['enumType'])) {
+                    $childProperty = new ReflectionEnumProperty(
+                        $childProperty,
+                        $mapping['enumType']
+                    );
+                }
+
                 $this->reflFields[$field] = new ReflectionEmbeddedProperty(
                     $parentReflFields[$mapping['declaredField']],
-                    $this->getAccessibleProperty($reflService, $mapping['originalClass'], $mapping['originalField']),
+                    $childProperty,
                     $mapping['originalClass']
                 );
                 continue;
@@ -1517,7 +1540,7 @@ class ClassMetadataInfo implements ClassMetadata
                 ! isset($mapping['type'])
                 && ($type instanceof ReflectionNamedType)
             ) {
-                if (PHP_VERSION_ID >= 80100 && ! $type->isBuiltin() && enum_exists($type->getName(), false)) {
+                if (PHP_VERSION_ID >= 80100 && ! $type->isBuiltin() && enum_exists($type->getName())) {
                     $mapping['enumType'] = $type->getName();
 
                     $reflection = new ReflectionEnum($type->getName());
@@ -1664,6 +1687,10 @@ class ClassMetadataInfo implements ClassMetadata
 
             if (! enum_exists($mapping['enumType'])) {
                 throw MappingException::nonEnumTypeMapped($this->name, $mapping['fieldName'], $mapping['enumType']);
+            }
+
+            if (! empty($mapping['id'])) {
+                $this->containsEnumIdentifier = true;
             }
         }
 
@@ -2661,7 +2688,7 @@ class ClassMetadataInfo implements ClassMetadata
     {
         if (isset($table['name'])) {
             // Split schema and table name from a table name like "myschema.mytable"
-            if (strpos($table['name'], '.') !== false) {
+            if (str_contains($table['name'], '.')) {
                 [$this->table['schema'], $table['name']] = explode('.', $table['name'], 2);
             }
 
@@ -2907,7 +2934,7 @@ class ClassMetadataInfo implements ClassMetadata
 
                         if (! isset($field['column'])) {
                             $fieldName = $field['name'];
-                            if (strpos($fieldName, '.')) {
+                            if (str_contains($fieldName, '.')) {
                                 [, $fieldName] = explode('.', $fieldName);
                             }
 
@@ -3691,7 +3718,7 @@ class ClassMetadataInfo implements ClassMetadata
             return $className;
         }
 
-        if (strpos($className, '\\') === false && $this->namespace) {
+        if (! str_contains($className, '\\') && $this->namespace) {
             return $this->namespace . '\\' . $className;
         }
 

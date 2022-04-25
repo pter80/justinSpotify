@@ -1,0 +1,19 @@
+{# affichage des artistes à une date donnée#}
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link type="text/css" href="views/userAccount.css" rel="stylesheet" > 
+{% endblock %}
+
+{% block body %}
+    <h1>Bonjour {{user.getName()}}</h1>
+{% endblock %}
+
+{% block ju %}
+   
+   <a href="?c=topDate&t=newliste"> Liste des tops par dates </a>
+   
+   <a href="?c=user&t=closeSession"> Deconnexion</a>
+   
+{% endblock %}

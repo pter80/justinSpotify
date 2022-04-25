@@ -1,0 +1,18 @@
+button {
+background-color: #57d53b; /* #7D8E95 */
+color: black;
+padding: 14px 0px;
+margin: 10px 0;
+border: none;
+cursor: pointer;
+width: 48%;
+text-align:center;
+border-radius: 10px;
+
+}
+
+
+
+button:hover{
+transform: scale(1.02);
+}

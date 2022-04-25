@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Doctrine\ORM;
 
+use BackedEnum;
 use Countable;
 use Doctrine\Common\Cache\Psr6\CacheAdapter;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Util\ClassUtils;
 use Doctrine\DBAL\Cache\QueryCacheProfile;
 use Doctrine\DBAL\Result;
 use Doctrine\Deprecations\Deprecation;
@@ -371,11 +373,11 @@ abstract class AbstractQuery
     /**
      * Sets a query parameter.
      *
-     * @param string|int  $key   The parameter position or name.
-     * @param mixed       $value The parameter value.
-     * @param string|null $type  The parameter type. If specified, the given value will be run through
-     *                           the type conversion of this type. This is usually not needed for
-     *                           strings and numeric types.
+     * @param string|int      $key   The parameter position or name.
+     * @param mixed           $value The parameter value.
+     * @param string|int|null $type  The parameter type. If specified, the given value will be run through
+     *                               the type conversion of this type. This is usually not needed for
+     *                               strings and numeric types.
      *
      * @return $this
      */
@@ -424,15 +426,20 @@ abstract class AbstractQuery
             return $value->name;
         }
 
+        if ($value instanceof BackedEnum) {
+            return $value->value;
+        }
+
         if (! is_object($value)) {
             return $value;
         }
 
         try {
+            $class = ClassUtils::getClass($value);
             $value = $this->_em->getUnitOfWork()->getSingleIdentifierValue($value);
 
             if ($value === null) {
-                throw ORMInvalidArgumentException::invalidIdentifierBindingEntity();
+                throw ORMInvalidArgumentException::invalidIdentifierBindingEntity($class);
             }
         } catch (MappingException | ORMMappingException $e) {
             /* Silence any mapping exceptions. These can occur if the object in
