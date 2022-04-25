@@ -36,7 +36,7 @@ $rows = json_decode($data);
 //die;
 $order=0;//permet de déterminer le classement des artistes
 $dql="SELECT u FROM Entity\User u";
-$qb=$em->createQuery($dql);
+$qb=$em->createQuery($dql)->setMaxResults(1);
 $user=$qb->getOneOrNullResult();
 //si user est à null -> erreur 
 foreach($rows->items as $spotify_artist) {
