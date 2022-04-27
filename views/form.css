@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 form {
-margin-top: 20px;
+margin-top: 135px;
 background-color: #57d53b;
-padding: 40px 60px;
-border-radius: 10px;
-min-width: 300px;
-padding-left: 30px;
+padding: 90px 100px;
+border-radius: 500px;
+min-width: 40px;
+padding-left: 70px;
 }
 form h1{
 color: black;
 text-align:center;
+
 }
 
 form .inputs {
@@ -42,4 +43,9 @@ color: #fff;
 background-color: black;
 outline:none;
 cursor:pointer;
+}
+
+button:hover{
+transform: scale(1.02);
+color: antiquewhite;
 }

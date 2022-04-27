@@ -2,22 +2,31 @@
 
 {% extends "base.html" %}
 
-{% block body %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link type="text/css" href="views/newList.css" rel="stylesheet" > 
+{% endblock %}
+
+{% block titrePage %}
     <h1>Liste des tops par dates</h1>
+
 {% endblock %}
 
 {% block ju %}
-   
-    <ul>
+   <div class="list">
         {% for dt in dts %}
-            <li>{{ dt["dt"]|date("d/m/Y") }}</li>
-            <div>
-            <a href="?c=topDate&t=listeDate&dt={{dt['dt']|date ("Y-m-d")}}"><input type="button" value ="Afficher"></a>
-            <input type="hidden" id="id" name="topDate" value="{{top_date}}">
-        </div>
+            <div class="card">
+                <h1>{{ dt["dt"]|date("d/m/Y") }}</h1>
+                <p>🎤</p>
+                <div class="button">
+                    <a href="?c=topDate&t=listeDate&dt={{dt['dt']|date ("Y-m-d")}}"><input type="button" value ="Afficher"></a>
+                    <input type="hidden" id="id" name="topDate" value="{{top_date}}">
+                </div>
+            </div>
+        
         {% endfor %}
-    </ul>
-
+    </div>
+        
     <script>
         $(document).ready(function() {
             $('#topDate').DataTable();

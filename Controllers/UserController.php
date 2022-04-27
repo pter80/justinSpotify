@@ -31,9 +31,9 @@ class UserController extends Controller
         $query = $qb->getQuery();
         $user = $query->getOneOrNullResult();
        
-       if($user){
+        if($user){
         //le user existe deja
-        echo $this->twig->render('formAccount.twig', []);
+            echo $this->twig->render('formAccount.twig', []);
         }
         
         else{
@@ -59,70 +59,75 @@ class UserController extends Controller
     public function loginUser($params)//recupere les elements du formulaire de connexion et traite la demande
     {
         $em=$params["em"];
-        
-            if (isset($_SESSION['name'])) { //Si une session utilisateur existe déja
-                $name = $_SESSION['name'];
-                
-                //recuperation des donnees de l'utilisateur (groupes...)
-                $qb=$em->createQueryBuilder();
-                $qb->select('u')
-                ->from('Entity\User', 'u')
-                ->where('u.name =:name')
-                ->setParameter('name', $name)
-                ->setMaxResults(1);
-                $query = $qb->getQuery();
-                $user = $query->getOneOrNullResult();
-                
-                echo $this->twig->render('userAccount.twig',['name' =>$name, 'user' =>$user]);
-    
-    }
-        
-        //récupère les données du formulaire
-        $name = $_POST["name"];
-        $password = $_POST["password"];
-        
-        //vérifier si le compte existe dans la table
-        $qb=$em->createQueryBuilder();
-        $qb->select('u')
-        ->from('Entity\User', 'u')
-        ->where('u.name =:name')
-        ->setParameter('name', $name)
-        ->setMaxResults(1)
-        ;
-        
-        $query = $qb->getQuery();
-        $user = $query->getOneOrNullResult();
-        
-        $flagLogin = false; //si tout est ok 
-        
-        if($user){ //si le user existe
-        
-            if (password_verify($password,$user->getPassword())) { //et si le mot de passe correspond
-                session_destroy();
-                
-                session_start(); //creation de la session
-                
-                $_SESSION["name"]=$name;
-                
-                echo $this->twig->render('userAccount.twig',['name' =>$name, 'user' =>$user ]);
-            }
-            else { //si le mdp est incorrecte
-                $flagLogin = true;
-                echo $this->twig->render('formLogin.twig',['flagLogin' =>$flagLogin]);
 
-            }
+
+        if (isset($_SESSION['name'])) { 
+            //Si une session utilisateur existe déja
+            $name = $_SESSION['name'];
+                
+            //recuperation des donnees de l'utilisateur (groupes...)
+            $qb=$em->createQueryBuilder();
+            $qb->select('u')
+            ->from('Entity\User', 'u')
+            ->where('u.name =:name')
+            ->setParameter('name', $name)
+            ->setMaxResults(1);
+            $query = $qb->getQuery();
+            $user = $query->getOneOrNullResult(); 
             
+            echo $this->twig->render('userAccount.twig',['name' =>$name, 'user' =>$user]);
+    
         }
+    
+        else {
+            
+        //récupère les données du formulaire
+            $name = $_POST["name"];
+            $password = $_POST["password"];
+            
+            //vérifier si le compte existe dans la table
+            $qb=$em->createQueryBuilder();
+            $qb->select('u')
+            ->from('Entity\User', 'u')
+            ->where('u.name =:name')
+            ->setParameter('name', $name)
+            ->setMaxResults(1)
+            ;
+            
+            $query = $qb->getQuery();
+            $user = $query->getOneOrNullResult();
+            
+            $flagLogin = false; //si tout est ok, pas besoin de créer  
         
-        else { //si le user n'existe pas
+            if($user){ //si le user existe
+            
+                if (password_verify($password,$user->getPassword())) { //et si le mot de passe correspond
+                    session_destroy();
+                    
+                    session_start(); //creation de la session
+                    
+                    $_SESSION["name"]=$name;
+                    
+                    echo $this->twig->render('userAccount.twig',['name' =>$name, 'user' =>$user ]);
+                }
+                else { //si le mdp est incorrecte
+                    $flagLogin = true;
+                    echo $this->twig->render('formLogin.twig',['flagLogin' =>$flagLogin]);
+    
+                }
+                
+            }
+        
+            else { //si le user n'existe pas
                 $flagLogin = true;
                 echo $this->twig->render('formLogin.twig',['flagLogin' =>$flagLogin]);
+            }
         }
     }
     
     public function closeSession()//deconnexion d'un compte utilisateur
     {
-        unset($_SESSION['username']);
+        unset($_SESSION['name']); 
         echo $this->twig->render('index.html',[]);
     }
 

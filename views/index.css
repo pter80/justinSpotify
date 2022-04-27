@@ -8,6 +8,7 @@ cursor: pointer;
 width: 48%;
 text-align:center;
 border-radius: 10px;
+font-family :monospace;
 
 }
 
@@ -15,4 +16,29 @@ border-radius: 10px;
 
 button:hover{
 transform: scale(1.02);
+color: antiquewhite;
+}
+/* gros titre*/
+h1{
+    text-align:center;
+    color:  #57d53b;
+    font-style: italic;
+    font-family :monospace;
+}
+/* votre espace */
+h2{
+    text-align:center;
+    color: antiquewhite;
+    font-size: 2em;
+    font-family :monospace;
+    
+}
+/* logo */
+h3{
+    text-align:center;
+    
+}
+
+#logo{
+    font-size: 80px;
 }

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 body {
-  background-color: antiquewhite;
+  background-color: black;
 }
 
 *{
@@ -20,8 +20,8 @@ nav ul{
   align-items :center;
   list-style-type: none;
   height : 65px;
-  background-color: black;
-  color : white;
+  background-color: antiquewhite;
+  color : black;
   
 }
 nav ul li{
@@ -48,7 +48,8 @@ nav ul li{
    width: 70%;
    margin: 23px auto;
    border-radius:12px;
-   padding-left: 30%;
+   padding-left: 10%;
+   overflow-x: auto;
    
  }
   
@@ -77,4 +78,30 @@ nav ul li{
     text-align: center;
   }
   
-  
+button {
+background-color: #57d53b; /* #7D8E95 */
+color: black;
+padding: 14px 0px;
+margin: 10px 0;
+border: none;
+cursor: pointer;
+width: 48%;
+text-align:center;
+border-radius: 10px;
+position : relative;
+
+}
+
+button:hover{
+transform: scale(1.02);
+}
+
+h1{
+    text-align:center;
+}
+
+button.start{
+padding:14px 15px;
+margin: 10px 0;
+left : 50px;
+}

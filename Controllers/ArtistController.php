@@ -48,7 +48,7 @@ class ArtistController extends Controller
 
         $ch = curl_init("https://api.spotify.com/v1/artists/".$spotifyArtist);
         //$fp = fopen("./documents/top.json", "w");
-        $token='BQCD8D9R-ZnRC_vLlbQLzoZ0TarsgJSeLQqHB81PzTaeDrmbot1yRL4lyfeZU1-WU0A0JdmHp22zNtdJCAhclUaWuY2GNt_nFIFbQqW-ialKmnuDRIPN5BxDMatX1lgJXEfEECpGYMQtglSgcnMS';
+        $token='BQBCOsfTQU5my4HXZH4CFQ5iOjEseWLfChBTCZ4Y2uKRevhyJvY';
         //curl_setopt($ch, CURLOPT_URL, "https://api.spotify.com/v1/oauth2/token");
         $authorization = "Authorization: Bearer ".$token;
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); 

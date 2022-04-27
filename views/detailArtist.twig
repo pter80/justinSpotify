@@ -3,12 +3,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1>{{ artist.name}}</h1>
+    <h1>{{ artist.name}} 🎶</h1>
+    
+    <h2>{{artist.followers}} utilisateurs suivent actuellement {{artist.name}}</h2>
 {% endblock %}
 
 {% block ju %}
    
-   <a href="{{ artist.externalUrl}}"> Page de {{artist.name}}</a>
+   <a href="{{ artist.externalUrl}}"> 🎧 Écoutez les titres de {{artist.name}} dès maintenant en cliquant ici 🎧</a>
    
    
 {% endblock %}
