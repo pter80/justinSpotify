@@ -89,6 +89,7 @@ width: 48%;
 text-align:center;
 border-radius: 10px;
 position : relative;
+font-family :monospace;
 
 }
 
@@ -103,5 +104,14 @@ h1{
 button.start{
 padding:14px 15px;
 margin: 10px 0;
+font-family :monospace;
+}
+
+/* bouton accueil */
+
+button.home{
+padding:14px 15px;
+margin: 10px 0;
 left : 50px;
+font-family :monospace;
 }

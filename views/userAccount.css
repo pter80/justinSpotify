@@ -8,6 +8,7 @@ cursor: pointer;
 width: 48%;
 text-align:center;
 border-radius: 10px;
+font-family :monospace;
 
 }
 
@@ -21,10 +22,26 @@ border-radius: 10px;
 
 .button :hover{
 transform: scale(1.02);
-color: black;
+color: antiquewhite;
 }
 
 h1{
+    
     text-align:center;
     color : antiquewhite;
+    font-family :monospace;
+}
+
+/* gros titre*/
+h1{
+    text-align:center;
+    color:  #57d53b;
+    font-style: italic;
+    font-family :monospace;
+}
+
+/* logo */
+h2{
+    text-align:center;
+    
 }

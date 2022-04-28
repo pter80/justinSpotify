@@ -6,11 +6,9 @@
     <link type="text/css" href="views/userAccount.css" rel="stylesheet" > 
 {% endblock %}
 
-{% block body %}
-    <h1>Bonjour {{user.getName()}}</h1>
-{% endblock %}
-
 {% block ju %}
+    <h1>Bonjour {{user.getName()}}</h1>
+    <h2 id="logo">🎶</h2>
 
     <div class="button">
         <a href="?c=topDate&t=newliste">Liste des tops par dates</a>
