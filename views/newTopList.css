@@ -1,34 +1,28 @@
-
-
-h1{
+h1 {
     text-align:center;
-    color : #57d53b;
+    color:  #57d53b;
     font-family :monospace;
-    font-size: 90px;
 }
 
+/* votre espace */
 h2{
     text-align:center;
-    color : antiquewhite;
+    color: antiquewhite;
+    font-size: 1.4em;
     font-family :monospace;
+    
 }
 
-#logo {
-    font-size: 40px;
-}
-
-.button {
+.button{
 background-color: #57d53b; /* #7D8E95 */
 color: black;
-font-family :monospace;
-padding: 20px 130px;
-margin: 20px 0;
+padding: 4px 0px;
+margin:4px 72px;
 border: none;
 cursor: pointer;
+width: 48%;
 text-align:center;
-border-radius: 10px;
-font-family :monospace;
-text-align:center;
+border-radius: 30px;
 
 }
 

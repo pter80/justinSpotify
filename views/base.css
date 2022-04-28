@@ -1,15 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-body {
-  background-color: black;
-}
 
 *{
   margin :0; 
   padding :0;
   
 }
+
+html {
+  height:100%;
+}
+
+
+body {
+  min-height:100%;
+  background-color: black;
+  text-align:center;
+  margin: 0;
+  padding: 0;
+}
+
+
 
 nav {
   font-family: 'Ubuntu', sans-serif;
@@ -22,14 +34,17 @@ nav ul{
   height : 65px;
   background-color: antiquewhite;
   color : black;
+  min-height:100%;
   
 }
 nav ul li{
   padding: 0 12px;
+  min-height:100%;
 }
 .brand img{
   width: 44px;
   padding : 0 8px;
+  min-height:100%;
  }
  
  .brand {
@@ -37,10 +52,11 @@ nav ul li{
    align-items: center;
    font-weight: bolder;
    font-size : 1.3rem;
+   min-height:100%;
  }
  
  .container{
-   min-height: 75vh;
+   min-height: 100%;
    background-color : black;
    color : white;
    font-family: 'Valera Round', sans-serif ;
@@ -48,35 +64,10 @@ nav ul li{
    width: 70%;
    margin: 23px auto;
    border-radius:12px;
-   padding-left: 10%;
+   padding-left: 5%;
    overflow-x: auto;
    
  }
-  
-  .bottom{
-    position: sticky;
-    height: 130px;
-    background-color: black;
-    color: white;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    flex-direction: column;
-  }
-  
-  .icons{
-    margin-top: 14px;
-  }
-  
-  .icons i{
-    cursor: pointer;
-  }
-   
-  #myProgressBar{
-    width: 80vw;
-    text-align: center;
-  }
   
 button {
 background-color: #57d53b; /* #7D8E95 */
@@ -90,6 +81,7 @@ text-align:center;
 border-radius: 10px;
 position : relative;
 font-family :monospace;
+min-height:100%;
 
 }
 
@@ -114,4 +106,15 @@ padding:14px 15px;
 margin: 10px 0;
 left : 50px;
 font-family :monospace;
+}
+
+footer{
+background:antiquewhite;
+position:absolute;
+bottom:0;
+width:100%;
+padding-top:25px;
+height:25px;
+font-family :monospace;
+
 }

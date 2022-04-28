@@ -2,7 +2,7 @@
 <html>
     <head>
         {% block stylesheet %}
-        <link type="text/css" href="views/style.css" rel="stylesheet" >
+        <link type="text/css" href="views/base.css" rel="stylesheet" >
          <link rel="stylesheet" href="views/css/myStyle.css">
         <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
         <script src="javascript/jquery.js"></script>
@@ -57,12 +57,14 @@
         <script src="script.js"></script>
     </h3>
     
-</body>
- {% endblock %}
+    <footer>
 
-<form id="formulaire">
+        <p>© Goblet Justin</p>
+
+    </footer>
     
-    
-</form>
+    {% endblock %}
+</body>
+
 
 </html>

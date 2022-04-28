@@ -2,15 +2,24 @@
 
 {% extends "base.html" %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link type="text/css" href="views/detailArtist.css" rel="stylesheet" > 
+{% endblock %}
+
 {% block body %}
-    <h1>{{ artist.name}} 🎶</h1>
+    <h1>🎶 {{ artist.name}} 🎶</h1>
     
     <h2>{{artist.followers}} utilisateurs suivent actuellement {{artist.name}}</h2>
+    
+     <h2 id="logo">🎧</h2>
 {% endblock %}
 
 {% block ju %}
-   
-   <a href="{{ artist.externalUrl}}"> 🎧 Écoutez les titres de {{artist.name}} dès maintenant en cliquant ici 🎧</a>
-   
+
+
+<div class="button">
+    <a href="{{ artist.externalUrl}}"><input type="button" value ="🎧 Écoutez les titres de {{artist.name}} dès maintenant en cliquant ici 🎧"></a>
+</div>
    
 {% endblock %}
