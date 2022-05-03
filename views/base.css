@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-
 *{
   margin :0; 
   padding :0;
@@ -35,12 +34,13 @@ nav ul{
   background-color: antiquewhite;
   color : black;
   min-height:100%;
-  
 }
+
 nav ul li{
   padding: 0 12px;
   min-height:100%;
 }
+
 .brand img{
   width: 44px;
   padding : 0 8px;
@@ -56,37 +56,34 @@ nav ul li{
  }
  
  .container{
-   min-height: 100%;
+   height: 800px;
    background-color : black;
    color : white;
    font-family: 'Valera Round', sans-serif ;
    display: flex;
-   width: 70%;
    margin: 23px auto;
    border-radius:12px;
-   padding-left: 5%;
    overflow-x: auto;
-   
+   justify-content: center;
  }
   
 button {
-background-color: #57d53b; /* #7D8E95 */
-color: black;
-padding: 14px 0px;
-margin: 10px 0;
-border: none;
-cursor: pointer;
-width: 48%;
-text-align:center;
-border-radius: 10px;
-position : relative;
-font-family :monospace;
-min-height:100%;
-
+    background-color: #57d53b; /* #7D8E95 */
+    color: black;
+    padding: 14px 0px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+    text-align:center;
+    border-radius: 10px;
+    position : relative;
+    font-family :monospace;
+    min-height:100%;
 }
 
 button:hover{
-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 h1{
@@ -94,27 +91,26 @@ h1{
 }
 
 button.start{
-padding:14px 15px;
-margin: 10px 0;
-font-family :monospace;
+    padding:14px 15px;
+    margin: 10px 0;
+    font-family :monospace;
 }
 
 /* bouton accueil */
 
 button.home{
-padding:14px 15px;
-margin: 10px 0;
-left : 50px;
-font-family :monospace;
+    padding:14px 15px;
+    margin: 10px 0;
+    left : 50px;
+    font-family :monospace;
 }
 
 footer{
-background:antiquewhite;
-position:absolute;
-bottom:0;
-width:100%;
-padding-top:25px;
-height:25px;
-font-family :monospace;
-
+    background:antiquewhite;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding-top:25px;
+    height:25px;
+    font-family :monospace;
 }

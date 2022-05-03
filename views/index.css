@@ -1,22 +1,21 @@
 button {
-background-color: #57d53b; /* #7D8E95 */
-color: black;
-padding: 14px 0px;
-margin: 10px 0;
-border: none;
-cursor: pointer;
-width: 48%;
-text-align:center;
-border-radius: 10px;
-font-family :monospace;
-
+    background-color: #57d53b; /* #7D8E95 */
+    color: black;
+    padding: 14px 0px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+    text-align:center;
+    border-radius: 10px;
+    font-family :monospace;
 }
 
 
 
 button:hover{
-transform: scale(1.02);
-color: antiquewhite;
+    transform: scale(1.02);
+    color: antiquewhite;
 }
 
 /* gros titre*/
@@ -26,18 +25,18 @@ h1{
     font-style: italic;
     font-family :monospace;
 }
+
 /* votre espace */
 h2{
     text-align:center;
     color: antiquewhite;
     font-size: 2em;
     font-family :monospace;
-    
 }
+
 /* logo */
 h3{
     text-align:center;
-    
 }
 
 #logo{
