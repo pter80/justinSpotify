@@ -13,7 +13,7 @@ $paths = array("src/Entity","toto");
 $isDevMode = true;
 $proxyDir=null;
 $cache=null;
-// the connection configuration
+// configuration de connection
 $dbParams = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'justin',
@@ -32,8 +32,6 @@ $data = file_get_contents($file);
 // décoder le flux JSON
 $rows = json_decode($data); 
 // accéder à l'élément approprié
-//var_dump($rows);
-//die;
 $order=0;//permet de déterminer le classement des artistes
 $dql="SELECT u FROM Entity\User u";
 $qb=$em->createQuery($dql)->setMaxResults(1);

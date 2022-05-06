@@ -11,12 +11,11 @@
     background-color: #57d53b;
     border-radius: 10px;
     }
+    
 .card h1{
     margin: 0px;
     padding: 10px 23%;
     }
-
-
 
 .card p{
     margin: 0px;
@@ -24,8 +23,6 @@
     font-size: 70px;
     padding-bottom: 15px;
     }
-
-
 
 .card input{
     margin: 5px 42%;
@@ -38,8 +35,6 @@
     transition: transform 0.25s;
     }
 
-
-
 .card input:hover{
     color: black;
     }
@@ -48,4 +43,4 @@ h1 {
     color : antiquewhite;
     text-align : center;
     font-family :monospace;
-}
+    }
